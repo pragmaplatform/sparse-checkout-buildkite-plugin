@@ -1,0 +1,8 @@
+services:
+  tests: ...
+  lint:
+    image: buildkite/plugin-linter
+    command: ['--id', 'pragmaplatform/sparse-checkout']
+    volumes:
+      - ".:/plugin:ro"
+

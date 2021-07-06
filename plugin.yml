@@ -1,0 +1,9 @@
+name: Sparse Checkout
+description: Sparse Checkout of a Github repository 
+author: https://github.com/pragmaplatform
+requirements: []
+configuration:
+  properties:
+    paths:
+      type: array
+
