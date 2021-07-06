@@ -8,7 +8,7 @@ Add the following to your `pipeline.yml`:
 
 ```yml
 steps:
-  - command: ls
+  - command: echo sparse-checkout
     plugins:
       - pragmaplatform/sparse-checkout#v1.0.0:
           paths: ["dir1", "dir2"]
