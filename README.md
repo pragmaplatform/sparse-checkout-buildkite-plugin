@@ -1,3 +1,5 @@
+# WARNING THIS DOES NOT YET WORk AND IS UNDER ACTIVE DEVELOPMENT
+
 # Sprase Checkout Buildkite Plugin
 
 Sparse checkouts a directory from Github. Based on https://buildkite.com/docs/plugins/writing
