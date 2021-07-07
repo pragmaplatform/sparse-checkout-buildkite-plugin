@@ -5,5 +5,5 @@ requirements: []
 configuration:
   properties:
     paths:
-      type: array
+      type: string
 

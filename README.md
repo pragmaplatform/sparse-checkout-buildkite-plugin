@@ -13,7 +13,7 @@ steps:
   - command: echo sparse-checkout
     plugins:
       - pragmaplatform/sparse-checkout#v1.0.0:
-          paths: ["dir1", "dir2"]
+          paths: "dir1 dir2"
 ```
 
 ## Configuration
