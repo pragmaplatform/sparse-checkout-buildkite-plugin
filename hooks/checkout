@@ -3,6 +3,7 @@ set -xeu
 
 PATHS="$BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
 
+echo "Working directory: $(pwd)"
 echo "Sparse checking out the following paths: $PATHS"
 
 # Clean build every time
