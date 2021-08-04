@@ -13,4 +13,6 @@ for thisPath in $PATHS; do
 	git sparse-checkout add $thisPath
 done
 
+git checkout "$BUILDKITE_BRANCH"
+
 buildkite-agent annotate "Sparse checkout of the following paths: $PATHS"
