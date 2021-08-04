@@ -12,6 +12,8 @@ rm -rf $BUILDKITE_PIPELINE_NAME
 git clone --no-checkout $BUILDKITE_REPO $BUILDKITE_PIPELINE_NAME && cd $BUILDKITE_PIPELINE_NAME
 git sparse-checkout init --cone
 
+# Always checkout the .buildkite
+git sparse-checkout add .buildkite
 for thisPath in $PATHS; do
 	git sparse-checkout add $thisPath
 done
