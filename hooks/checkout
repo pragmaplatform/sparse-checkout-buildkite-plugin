@@ -7,10 +7,9 @@ echo "Working directory: $(pwd)"
 echo "Sparse checking out the following paths: $PATHS"
 
 # Clean build every time
-REPO_NAME=$(basename "$BUILDKITE_REPO" .git)
 cd ..
-rm -rf $REPO_NAME
-git clone --no-checkout $BUILDKITE_REPO $REPO_NAME && cd $REPO_NAME
+rm -rf $BUILDKITE_PIPELINE_NAME
+git clone --no-checkout $BUILDKITE_REPO $BUILDKITE_PIPELINE_NAME && cd $BUILDKITE_PIPELINE_NAME
 git sparse-checkout init --cone
 
 for thisPath in $PATHS; do
