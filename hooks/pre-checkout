@@ -5,10 +5,12 @@ PATHS="$BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
 
 echo "Sparse checking out the following paths: $PATHS"
 
-git clone --filter=blob:none --sparse $BUILDKITE_REPO && cd "$(basename "$BUILDKITE_REPO" .git)"
+git clone --no-checkout $BUILDKITE_REPO
+cd $(basename "$BUILDKITE_REPO" .git)
+git sparse-checkout init --cone
 
 for thisPath in $PATHS; do
-	echo Path: $thisPath; git sparse-checkout set $thisPath
+	git sparse-checkout add $thisPath
 done
 
 buildkite-agent annotate "Sparse checkout of the following paths: $PATHS"
