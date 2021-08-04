@@ -1,4 +1,4 @@
-# Sprase Checkout Buildkite Plugin
+# Sparse Checkout Buildkite Plugin
 
 Sparse checkouts a directory from Github. Based on https://buildkite.com/docs/plugins/writing
 
