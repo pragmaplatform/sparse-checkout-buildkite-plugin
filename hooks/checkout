@@ -5,8 +5,7 @@ PATHS="$BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
 
 echo "Sparse checking out the following paths: $PATHS"
 
-git clone --no-checkout $BUILDKITE_REPO
-cd $(basename "$BUILDKITE_REPO" .git)
+git clone --no-checkout $BUILDKITE_REPO .
 git sparse-checkout init --cone
 
 for thisPath in $PATHS; do
