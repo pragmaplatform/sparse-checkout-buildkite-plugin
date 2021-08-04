@@ -1,0 +1,26 @@
+#!/bin/bash
+set -eu
+
+git clone --no-checkout git@github.com:WSStudios/tdp1.git --depth 1
+cd tdp1
+git sparse-checkout init --cone
+git sparse-checkout add pragma-engine
+git checkout master
+du -h .
+ 16M	./pragma-engine
+681M	./.git
+697M	.
+
+PATHS="$BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
+
+echo "Sparse checking out the following paths: $PATHS"
+
+git clone --no-checkout $BUILDKITE_REPO
+cd $(basename "$BUILDKITE_REPO" .git)
+git sparse-checkout init --cone
+
+for thisPath in $PATHS; do
+	git sparse-checkout add $thisPath
+done
+
+buildkite-agent annotate "Sparse checkout of the following paths: $PATHS"
