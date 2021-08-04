@@ -1,5 +1,3 @@
-# WARNING THIS DOES NOT YET WORk AND IS UNDER ACTIVE DEVELOPMENT
-
 # Sprase Checkout Buildkite Plugin
 
 Sparse checkouts a directory from Github. Based on https://buildkite.com/docs/plugins/writing
@@ -12,7 +10,7 @@ Add the following to your `pipeline.yml`:
 steps:
   - command: echo sparse-checkout
     plugins:
-      - pragmaplatform/sparse-checkout#v1.1.1
+      - pragmaplatform/sparse-checkout#v1.1.8:
           paths: "dir1 dir2"
 ```
 
