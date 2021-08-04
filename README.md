@@ -10,7 +10,7 @@ Add the following to your `pipeline.yml`:
 steps:
   - command: echo sparse-checkout
     plugins:
-      - pragmaplatform/sparse-checkout#v1.1.8:
+      - pragmaplatform/sparse-checkout#v1.1.9:
           paths: "dir1 dir2"
 ```
 
