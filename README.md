@@ -11,12 +11,12 @@ steps:
   - command: echo sparse-checkout
     plugins:
       - pragmaplatform/sparse-checkout#v1.1.9:
-          paths: "dir1 dir2"
+          paths: dir1 dir2
 ```
 
 ## Configuration
 
-### `paths` (Required, list)
+### `paths` (Required, strings)
 
 List of directory paths to sparse checkout.
 
