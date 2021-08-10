@@ -11,5 +11,7 @@ git clone --no-checkout $BUILDKITE_REPO $BUILDKITE_PIPELINE_NAME && cd $BUILDKIT
 git sparse-checkout init --cone
 
 # Always checkout the .buildkite
-git sparse-checkout set .buildkite $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS
+git sparse-checkout add .buildkite $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS
+git checkout "$BUILDKITE_BRANCH"
+
 buildkite-agent annotate "Sparse checkout of the following paths: $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
