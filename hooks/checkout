@@ -1,10 +1,8 @@
 #!/bin/bash
 set -eu
 
-PATHS="$BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
-
 echo "Working directory: $(pwd)"
-echo "Sparse checking out the following paths: $PATHS"
+echo "Sparse checking out the following paths: $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
 
 # Clean build every time
 cd ..
@@ -13,11 +11,7 @@ git clone --no-checkout $BUILDKITE_REPO $BUILDKITE_PIPELINE_NAME && cd $BUILDKIT
 git sparse-checkout init --cone
 
 # Always checkout the .buildkite
-git sparse-checkout add .buildkite
-for thisPath in $PATHS; do
-	git sparse-checkout add $thisPath
-done
-
+git sparse-checkout add .buildkite $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS
 git checkout "$BUILDKITE_BRANCH"
 
-buildkite-agent annotate "Sparse checkout of the following paths: $PATHS"
+buildkite-agent annotate "Sparse checkout of the following paths: $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
