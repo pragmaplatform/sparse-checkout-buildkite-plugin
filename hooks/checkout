@@ -1,6 +1,10 @@
 #!/bin/bash
 set -exu
 
+# Add github key if not already in known_hosts, otherwise clone will hang
+GITHUB_KEY=$(ssh-keyscan -H github.com)
+grep -qxF "$GITHUB_KEY" ~/.ssh/known_hosts || echo "$GITHUB_KEY" >> ~/.ssh/known_hosts
+
 echo "Working directory: $(pwd)"
 echo "Sparse checking out the following paths: $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
 
