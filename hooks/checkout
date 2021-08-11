@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exu
+set -eu
 
 # Add github key if not already in known_hosts, otherwise clone will hang
 GITHUB_KEY=$(ssh-keyscan -H github.com)
