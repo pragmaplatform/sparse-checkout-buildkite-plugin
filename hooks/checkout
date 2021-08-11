@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -exu
 
 echo "Working directory: $(pwd)"
 echo "Sparse checking out the following paths: $BUILDKITE_PLUGIN_SPARSE_CHECKOUT_PATHS"
