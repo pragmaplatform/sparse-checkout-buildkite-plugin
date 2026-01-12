@@ -29,6 +29,7 @@ fi
 
 SKIP_SSH_KEYSCAN_OPTION="$(plugin_read_config SKIP_SSH_KEYSCAN "false")"
 CLEAN_CHECKOUT_OPTION="$(plugin_read_config CLEAN_CHECKOUT "false")"
+DEPTH_OPTION="$(plugin_read_config DEPTH "1")"
 
 if [[ "${CLEAN_CHECKOUT_OPTION}" = "true" ]]; then
   log_warning "clean_checkout is enabled - this will destroy any local changes and reset the repository state"
@@ -63,7 +64,7 @@ validate_required_config "BUILDKITE_COMMIT" "${BUILDKITE_COMMIT:-}"
 if [[ ! -d .git ]]; then
   log_info "Cloning repository ${BUILDKITE_REPO}"
   if ! git clone \
-    --depth 1 \
+    --depth ${DEPTH_OPTION} \
     --filter=blob:none \
     --no-checkout \
     ${BUILDKITE_REPO_MIRROR:+--reference "$BUILDKITE_REPO_MIRROR"} \
@@ -96,7 +97,7 @@ if [[ -n "${BUILDKITE_GIT_FETCH_FLAGS:-}" ]]; then
   read -r -a FETCH_FLAGS <<<"${BUILDKITE_GIT_FETCH_FLAGS}"
 fi
 
-FETCH_FLAGS+=(--depth 1 origin)
+FETCH_FLAGS+=(--depth ${DEPTH_OPTION} origin)
 
 if [[ ${BUILDKITE_COMMIT} = "HEAD" ]]; then
   FETCH_FLAGS+=("${BUILDKITE_BRANCH}")

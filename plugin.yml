@@ -19,6 +19,9 @@ configuration:
     verbose:
       type: boolean
       default: false
+    depth:
+      type: integer
+      default: 1
   required:
     - paths
   additionalProperties: false

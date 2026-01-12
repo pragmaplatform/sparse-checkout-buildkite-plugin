@@ -42,6 +42,10 @@ Use this option for pipeline upload jobs that don't need to preserve local chang
 
 Enable verbose logging with bash execution tracing (`set -x`). This shows each command being executed and can help debug issues with ssh-keyscan, git operations, or other checkout problems. When enabled, you'll see detailed output including command arguments and any error messages from underlying tools.
 
+#### `depth` (positive integer, default: '1')
+
+Set the checkout depth. Helpful when combining this plugin with other capabilities such as monorepo-diff which requires history for the previous commit. Default value `1` matches historical behavior.
+
 ## Example
 
 Below is an example of using sparse-checkout plugin.
